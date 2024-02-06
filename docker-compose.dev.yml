@@ -10,57 +10,98 @@ volumes:
   web_720_node_modules:
   web_720_build:
 
+networks:
+  arrnet_front:
+    name: arrnet_frontend
+    driver: bridge
+
 services:
   api_1080:
     build:
       context: ./packages/api
     command: yarn dev
+    container_name: arr-bobarr-1080-api
     volumes:
       - ./packages/api:/usr/src/app
       - api_1080_node_modules:/usr/src/app/node_modules
       - api_1080_build:/usr/src/app/dist
+      - /opt/docker/library_1080/:/usr/library
+    env_file: /opt/docker/.env
     environment:
       - PORT=4000
+      - POSTGRES_DB=bobarr1080
+    network_mode: "service:wireguard"
+    restart: unless-stopped
 
   web_1080:
     build:
       context: ./packages/web
     command: yarn dev
+    container_name: arr-bobarr-1080-web
     volumes:
       - ./packages/web:/usr/src/app
       - web_1080_node_modules:/usr/src/app/node_modules
       - web_1080_build:/usr/src/app/.next
+    env_file: /opt/docker/.env
     environment:
       - PORT=3000
+      - POSTGRES_DB=bobarr1080
+    links:
+      - wireguard:arr-bobarr-1080-web
+    networks:
+      - arrnet_front
+    ports:
+      - 3000:3000
+    depends_on:
+      - arr-bobarr-1080-api
+    restart: unless-stopped
 
   api_720:
     build:
       context: ./packages/api
     command: yarn dev
+    container_name: arr-bobarr-720-api
     volumes:
       - ./packages/api:/usr/src/app
       - api_720_node_modules:/usr/src/app/node_modules
       - api_720_build:/usr/src/app/dist
+      - /opt/docker/library_720/:/usr/library
+    env_file: /opt/docker/.env
     environment:
       - PORT=4001
+      - POSTGRES_DB=bobarr720
+    network_mode: "service:wireguard"
+    restart: unless-stopped
 
   web_720:
     build:
       context: ./packages/web
+    container_name: arr-bobarr-720-web
     command: yarn dev
     volumes:
       - ./packages/web:/usr/src/app
       - web_720_node_modules:/usr/src/app/node_modules
       - web_720_build:/usr/src/app/.next
+    env_file: /opt/docker/.env
     environment:
       - PORT=3001
-
-  postgres:
-    image: postgres:12-alpine
+      - POSTGRES_DB=bobarr720
+    links:
+      - wireguard:arr-bobarr-720-api
+    networks:
+      - arrnet_front
     ports:
-      - 5432:5432
+      - 3001:3001
+    depends_on:
+      - arr-bobarr-720-api
+    restart: unless-stopped
 
-  redis:
-    image: bitnami/redis
-    ports:
-      - 6379:6379
+#  postgres:
+#    image: postgres:12-alpine
+#    ports:
+#      - 5432:5432
+
+#  redis:
+#    image: bitnami/redis
+#    ports:
+#      - 6379:6379
