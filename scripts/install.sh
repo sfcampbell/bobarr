@@ -16,23 +16,23 @@ cat << "EOF"
 
 EOF
 
-if [ "$(ls -A $PWD)" ]
-then
-    echo "$(pwd) is not empty"
-    echo "please re-run this install script in an empty and new directory"
-    exit 2
-fi
+# if [ "$(ls -A $PWD)" ]
+# then
+#     echo "$(pwd) is not empty"
+#     echo "please re-run this install script in an empty and new directory"
+#     exit 2
+# fi
 
-echo "downloading bobarr into directory"
+# echo "downloading bobarr into directory"
 
-mkdir -p library/downloads
-mkdir -p library/movies
-mkdir -p library/tvshows
+# mkdir -p library/downloads
+# mkdir -p library/movies
+# mkdir -p library/tvshows
 
-mkdir -p packages/jackett/config
-mkdir -p packages/jackett/downloads
-mkdir -p packages/transmission/config
-mkdir -p packages/vpn
+# mkdir -p packages/jackett/config
+# mkdir -p packages/jackett/downloads
+# mkdir -p packages/transmission/config
+# mkdir -p packages/vpn
 
 (
   cd packages/transmission/config

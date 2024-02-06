@@ -16,17 +16,7 @@ cat << "EOF"
 
 EOF
 
-if docker compose > /dev/null 2>&1; then
-    if docker compose version --short | grep "^2." > /dev/null 2>&1; then
-      COMPOSE_VERSION='docker compose'
-    fi
-elif docker-compose > /dev/null 2>&1; then
-  if ! [[ $(alias docker-compose 2> /dev/null) ]] ; then
-    if docker-compose version --short | grep "^2." > /dev/null 2>&1; then
-      COMPOSE_VERSION='docker-compose'
-    fi
-  fi
-fi
+COMPOSE_VERSION='docker compose'
 
 args=$1
 
