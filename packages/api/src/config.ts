@@ -24,5 +24,8 @@ export const JACKETT_RESPONSE_TIMEOUT = {
 export const LIBRARY_CONFIG = {
   moviesFolderName: String(process.env.LIBRARY_MOVIES_FOLDER_NAME),
   tvShowsFolderName: String(process.env.LIBRARY_TV_SHOWS_FOLDER_NAME),
-  port: String(process.env.PORT)
-};
+  };
+
+export const SVC_PORT = {
+  port: String(process.env.PORT),
+}
