@@ -1,5 +1,5 @@
 overwrite: true
-schema: "http://api:4000/graphql"
+schema: "http://api:${PORT}/graphql"
 documents: "{queries,mutations}/**/*.graphql"
 generates:
   utils/graphql.tsx:

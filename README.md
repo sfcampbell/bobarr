@@ -115,9 +115,12 @@ Check the [CHANGELOG](https://github.com/iam4x/bobarr/blob/master/CHANGELOG.md) 
 
 ## Services
 
-* Bobarr http://localhost:3000
-* Bobarr GraphQL API http://localhost:4000/graphql
-* Bobarr background jobs http://localhost:4000/jobs
+* Bobarr 1080p http://localhost:3000
+* Bobarr 720p http://localhost:3001
+* Bobarr 1080p GraphQL API http://localhost:4000/graphql
+* Bobarr 1080p background jobs http://localhost:4000/jobs
+* Bobarr 720p GraphQL API http://localhost:4001/graphql
+* Bobarr 720p background jobs http://localhost:4001/jobs
 * Jackett http://localhost:9117
 * Transmission http://localhost:9091
 * FlareSolverr http://localhost:8191

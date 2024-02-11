@@ -12,6 +12,6 @@ async function bootstrap() {
   app.use(bodyParser.json({ limit: '10mb' }));
   app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
   app.use('/jobs', bullBoardMiddleware);
-  await app.listen(4000);
+  await app.listen(${PORT});
 }
 bootstrap();

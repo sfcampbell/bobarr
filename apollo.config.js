@@ -4,7 +4,7 @@ module.exports = {
   client: {
     service: {
       name: 'bobarr',
-      url: 'http://localhost:4000/graphql',
+      url: 'http://localhost:${PORT}/graphql',
     },
     excludes: ['**/*.{ts,tsx,js,jsx}'],
   },
