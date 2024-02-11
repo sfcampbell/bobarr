@@ -5,7 +5,7 @@ import * as bodyParser from 'body-parser';
 
 import { AppModule } from './app.module';
 import { winstonOptions } from './utils/winston-options';
-import { SVC_PORT.port } from './config';
+import { SVC_PORT } from './config';
 
 async function bootstrap() {
   const logger = WinstonModule.createLogger(winstonOptions);
@@ -13,6 +13,6 @@ async function bootstrap() {
   app.use(bodyParser.json({ limit: '10mb' }));
   app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
   app.use('/jobs', bullBoardMiddleware);
-  await app.listen({port});
+  await app.listen({SVC_PORT});
 }
 bootstrap();
