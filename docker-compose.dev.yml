@@ -42,8 +42,6 @@ services:
       - POSTGRES_DB=bobarr1080
     ports:
       - 3000:3000
-    depends_on:
-      - arr-bobarr-1080-api
     restart: unless-stopped
 
   api_720:
@@ -77,8 +75,6 @@ services:
       - POSTGRES_DB=bobarr720
     ports:
       - 3001:3001
-    depends_on:
-      - arr-bobarr-720-api
     restart: unless-stopped
 
 #  postgres:
