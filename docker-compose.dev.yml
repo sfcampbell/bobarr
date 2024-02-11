@@ -21,7 +21,6 @@ services:
       - api_1080_node_modules:/usr/src/app/node_modules
       - api_1080_build:/usr/src/app/dist
       - /opt/docker/library_1080/:/usr/library
-    env_file: /opt/docker/.env
     environment:
       - PORT=4000
       - POSTGRES_DB=bobarr1080
@@ -36,7 +35,6 @@ services:
       - ./packages/web:/usr/src/app
       - web_1080_node_modules:/usr/src/app/node_modules
       - web_1080_build:/usr/src/app/.next
-    env_file: /opt/docker/.env
     environment:
       - PORT=3000
       - POSTGRES_DB=bobarr1080
@@ -54,7 +52,6 @@ services:
       - api_720_node_modules:/usr/src/app/node_modules
       - api_720_build:/usr/src/app/dist
       - /opt/docker/library_720/:/usr/library
-    env_file: /opt/docker/.env
     environment:
       - PORT=4001
       - POSTGRES_DB=bobarr720
@@ -69,7 +66,6 @@ services:
       - ./packages/web:/usr/src/app
       - web_720_node_modules:/usr/src/app/node_modules
       - web_720_build:/usr/src/app/.next
-    env_file: /opt/docker/.env
     environment:
       - PORT=3001
       - POSTGRES_DB=bobarr720
