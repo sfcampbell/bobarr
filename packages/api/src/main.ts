@@ -5,6 +5,7 @@ import * as bodyParser from 'body-parser';
 
 import { AppModule } from './app.module';
 import { winstonOptions } from './utils/winston-options';
+import { LIBRARY_CONFIG } from './config';
 
 async function bootstrap() {
   const logger = WinstonModule.createLogger(winstonOptions);
