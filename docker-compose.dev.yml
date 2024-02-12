@@ -24,6 +24,8 @@ services:
     build:
       context: ./packages/web-1080
     command: yarn dev
+    environment:
+      - WEB_UI_API_URL=http://127.0.0.1:4000
     volumes:
       - ./packages/web-1080:/usr/src/app
       - web_1080_node_modules:/usr/src/app/node_modules
@@ -42,6 +44,8 @@ services:
     build:
       context: ./packages/web-720
     command: yarn dev
+    environment:
+      - WEB_UI_API_URL=http://127.0.0.1:4001
     volumes:
       - ./packages/web-720:/usr/src/app
       - web_720_node_modules:/usr/src/app/node_modules
