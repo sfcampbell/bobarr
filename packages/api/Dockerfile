@@ -2,7 +2,7 @@ FROM node:14-alpine
 
 RUN apk add curl
 
-ENV PORT ${PORT}
+#ENV PORT 4000  ## PORT must now be specified in ENV variables
 EXPOSE ${PORT}
 
 WORKDIR /usr/src/app
