@@ -38,6 +38,7 @@ services:
     environment:
       - PORT=3000
       - POSTGRES_DB=bobarr1080
+      - WEB_UI_API_URL=http://127.0.0.1:4000
     ports:
       - 3000:3000
     restart: unless-stopped
@@ -69,6 +70,7 @@ services:
     environment:
       - PORT=3001
       - POSTGRES_DB=bobarr720
+      - WEB_UI_API_URL=http://127.0.0.1:4001
     ports:
       - 3001:3001
     restart: unless-stopped
