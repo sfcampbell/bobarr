@@ -1,28 +1,63 @@
 version: "3.6"
 
+networks:
+  arrnet_front:
+    name: arrnet_frontend
+    driver: bridge
+
+volumes:
+  api_1080_node_modules:
+  api_1080_build:
+  api_720_node_modules:
+  api_720_build:
+  web_1080_node_modules:
+  web_1080_build:
+  web_720_node_modules:
+  web_720_build:
+
 services:
-  api:
+  api_1080:
     build:
-      context: ./packages/api
+      context: ./packages/api-1080
     command: yarn dev
     volumes:
       - ./packages/api:/usr/src/app
-      - api_node_modules:/usr/src/app/node_modules
-      - api_build:/usr/src/app/dist
+      - api_1080_node_modules:/usr/src/app/node_modules
+      - api_1080_build:/usr/src/app/dist
+    networks:
+     - arrnet_front
 
-  web:
+  web_1080:
     build:
-      context: ./packages/web
+      context: ./packages/web-1080
     command: yarn dev
     volumes:
       - ./packages/web:/usr/src/app
-      - web_node_modules:/usr/src/app/node_modules
-      - web_build:/usr/src/app/.next
+      - web_1080_node_modules:/usr/src/app/node_modules
+      - web_1080_build:/usr/src/app/.next
+    
+  api_720:
+    build:
+      context: ./packages/api-720
+    command: yarn dev
+    volumes:
+      - ./packages/api:/usr/src/app
+      - api_720_node_modules:/usr/src/app/node_modules
+      - api_720_build:/usr/src/app/dist
 
-  postgres:
-    ports:
-      - 5432:5432
+  web_720:
+    build:
+      context: ./packages/web-720
+    command: yarn dev
+    volumes:
+      - ./packages/web:/usr/src/app
+      - web_720_node_modules:/usr/src/app/node_modules
+      - web_720_build:/usr/src/app/.next
 
-  redis:
-    ports:
-      - 6379:6379
+  # postgres:
+  #   ports:
+  #     - 5432:5432
+
+  # redis:
+  #   ports:
+  #     - 6379:6379
