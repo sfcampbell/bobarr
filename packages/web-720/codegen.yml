@@ -1,0 +1,20 @@
+overwrite: true
+schema: "http://api:4001/graphql"
+documents: "{queries,mutations}/**/*.graphql"
+generates:
+  utils/graphql.tsx:
+    config:
+      withHooks: true
+      withComponent: false
+      withHOC: false
+      withMutationFn: false
+      addDocBlocks: false
+      reactApolloVersion: 3
+    plugins:
+      - add:
+          content: '/* eslint-disable */'
+      - add:
+          content: '/* this is a generated file, do not edit */'
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
