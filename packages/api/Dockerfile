@@ -3,7 +3,7 @@ FROM node:14-alpine
 RUN apk add curl
 
 #ENV PORT 4000  ## PORT must now be specified in ENV variables
-EXPOSE ${PORT}
+EXPOSE $PORT
 
 WORKDIR /usr/src/app
 COPY package*.json yarn.lock ./
@@ -14,6 +14,6 @@ COPY . .
 RUN yarn build
 
 HEALTHCHECK --start-period=30s \
-  CMD curl -s -f http://localhost:${PORT}/health || exit 1
+  CMD curl -s -f http://localhost:$PORT/health || exit 1
 
 CMD yarn start:prod
