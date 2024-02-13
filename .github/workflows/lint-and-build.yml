@@ -5,9 +5,9 @@ name: lint and build
 
 on:
   push:
-    branches: [ redo ]
+    branches: [ master ]
   pull_request:
-    branches: [ redo ]
+    branches: [ master ]
 
 jobs:
   build:
