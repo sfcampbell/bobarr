@@ -4,5 +4,7 @@
 **/out
 **/.next
 
-packages/web/utils/graphql.tsx
-packages/web/utils/introspection-result.ts
+packages/web-720/utils/graphql.tsx
+packages/web-720/utils/graphql.tsx
+packages/web-1080/utils/introspection-result.ts
+packages/web-1080/utils/introspection-result.ts

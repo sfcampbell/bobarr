@@ -11,7 +11,7 @@ volumes:
   web_720_build:
 
 services:
-  api_1080:
+  bobarr-1080-api:
     build:
       context: ./packages/api-1080
     command: yarn dev
@@ -20,18 +20,18 @@ services:
       - api_1080_node_modules:/usr/src/app/node_modules
       - api_1080_build:/usr/src/app/dist
     
-  web_1080:
+  bobarr-1080-web:
     build:
       context: ./packages/web-1080
     command: yarn dev
     environment:
-      - WEB_UI_API_URL=http://127.0.0.1:4000
+      - WEB_UI_API_URL=http://bobarr-1080-api:4000
     volumes:
       - ./packages/web-1080:/usr/src/app
       - web_1080_node_modules:/usr/src/app/node_modules
       - web_1080_build:/usr/src/app/.next
     
-  api_720:
+  bobarr-720-api:
     build:
       context: ./packages/api-720
     command: yarn dev
@@ -40,12 +40,12 @@ services:
       - api_720_node_modules:/usr/src/app/node_modules
       - api_720_build:/usr/src/app/dist
 
-  web_720:
+  bobarr-720-web:
     build:
       context: ./packages/web-720
     command: yarn dev
     environment:
-      - WEB_UI_API_URL=http://127.0.0.1:4001
+      - WEB_UI_API_URL=http://bobarr-720-api:4001
     volumes:
       - ./packages/web-720:/usr/src/app
       - web_720_node_modules:/usr/src/app/node_modules
