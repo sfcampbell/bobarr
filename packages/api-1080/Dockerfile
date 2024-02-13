@@ -14,6 +14,6 @@ COPY . .
 RUN yarn build
 
 HEALTHCHECK --start-period=30s \
-  CMD curl -s -f http://localhost:4000/health || exit 1
+  CMD curl -s -f http://127.0.0.1:4000/health || exit 1
 
 CMD yarn start:prod
