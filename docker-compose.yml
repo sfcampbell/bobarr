@@ -7,15 +7,21 @@ volumes:
   web_node_modules:
   db_data:
   redis_data:
+  organizr_config:
 
 networks:
   default:
 
 services:
-  api:
-    container_name: bobarr-api
+  api-1080:
+    container_name: bobarr-1080-api
     env_file: .env
-    image: iam4x/bobarr-api:latest
+    environment:
+      - WEB_UI_API_URL=http://localhost:4000
+      - API_QUALITY=1080
+      - POSTGRES_DB=bobarr1080
+      - PORT=4000
+    image: longlivethepenguin/bobarr-1080-api:latest
     command: yarn start:prod
     restart: unless-stopped
     volumes:
@@ -23,14 +29,49 @@ services:
     ports:
       - 4000:4000
 
-  web:
+  api-720:
+    container_name: bobarr-1080-api
+    env_file: .env
+    environment:
+      - WEB_UI_API_URL=http://localhost:4001
+      - API_QUALITY=720
+      - POSTGRES_DB=bobarr720
+      - PORT=4001
+    image: longlivethepenguin/bobarr-720-api:latest
+    command: yarn start:prod
+    restart: unless-stopped
+    volumes:
+      - ./library:/usr/library
+    ports:
+      - 4001:4001
+
+  web-1080:
     container_name: bobarr-web
     env_file: .env
-    image: iam4x/bobarr-web:latest
+    environment:
+      - WEB_UI_API_URL=http://localhost:4000
+      - API_QUALITY=1080
+      - POSTGRES_DB=bobarr1080
+      - PORT=3000
+    image: longlivethepenguin/bobarr-1080-web:latest
     command: yarn start
     restart: unless-stopped
     ports:
       - 3000:3000
+
+  web-720:
+    container_name: bobarr-web
+    env_file: .env
+    environment:
+      - WEB_UI_API_URL=http://localhost:4001
+      - API_QUALITY=720
+      - POSTGRES_DB=bobarr720
+      - PORT=3001
+    image: longlivethepenguin/bobarr-720-web:latest
+    command: yarn start
+    restart: unless-stopped
+    ports:
+      - 3001:3001
 
   postgres:
     container_name: bobarr-postgresql
@@ -47,6 +88,7 @@ services:
     restart: unless-stopped
     volumes:
       - redis_data:/bitnami/redis/data
+      - ./packages/redis/redis.conf:/opt/bitnami/redis/mounted-etc/redis.conf
 
   jackett:
     image: linuxserver/jackett
@@ -83,9 +125,20 @@ services:
     container_name: bobarr-transmission-web
     depends_on:
       - transmission
-    environment:
-      - TZ=Europe/Paris
+    env_file: .env
     ports:
       - "9091:80"
     command: -w "http://transmission:9091;/"
+    restart: unless-stopped
+
+  organizr:
+    container_name: organizr
+    image: organizr/organizr
+    env_file: .env
+    environment:
+      - fpm="false" #optional
+    volumes:
+      - organizr_config:/config
+    ports:
+      - 80:80
     restart: unless-stopped
