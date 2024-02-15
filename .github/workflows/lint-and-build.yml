@@ -25,7 +25,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: yarn
-    - run: yarn add eslint --dev ## new
+#    - run: yarn add eslint --dev ## new
     - run: yarn lint
     - run: (cd packages/api-720 && yarn build)
     - run: (cd packages/api-1080 && yarn build)
