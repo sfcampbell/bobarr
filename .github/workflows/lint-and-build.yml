@@ -25,6 +25,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: yarn
-    - run: yarn lint --fix
-    - run: (cd packages/api && yarn build)
-    - run: (cd packages/web && yarn build)
+    - run: yarn lint -eslint-enable --fix 
+    - run: (cd packages/api-720 && yarn build)
+    - run: (cd packages/web-720 && yarn build)
+    - run: (cd packages/api-1080 && yarn build)
+    - run: (cd packages/web-1080 && yarn build)
