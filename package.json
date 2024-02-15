@@ -10,8 +10,8 @@
     "start:vpn": "./scripts/bobarr.sh start:vpn",
     "start:wireguard": "./scripts/bobarr.sh start:wireguard",
     "stop": "./scripts/bobarr.sh stop",
-    "dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --force-recreate -d && docker-compose -f docker-compose.yml -f docker-compose.dev.yml logs --tail 20 -f api web",
-    "dev:vpn": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.vpn.yml up --force-recreate -d && docker-compose -f docker-compose.yml -f docker-compose.dev.yml logs --tail 20 -f api web",
+    "dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --force-recreate -d && docker-compose -f docker-compose.yml -f docker-compose.dev.yml logs --tail 20 -f api-1080 api-720 web-1080 web-720",
+    "dev:vpn": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.vpn.yml up --force-recreate -d && docker-compose -f docker-compose.yml -f docker-compose.dev.yml logs --tail 20 -f api-1080 api-720 web-1080 web-720",
     "lint": "yarn eslint --ext .ts,.tsx packages/api-720 packages/api-1080 packages/web-720 packages/api-1080"
   },
   "devDependencies": {

@@ -33,10 +33,16 @@ mkdir -p packages/jackett/config
 mkdir -p packages/jackett/downloads
 mkdir -p packages/transmission/config
 mkdir -p packages/vpn
+mkdir -p packages/redis
 
 (
   cd packages/transmission/config
   curl -s https://raw.githubusercontent.com/iam4x/bobarr/master/packages/transmission/config/settings.json -o settings.json
+)
+
+(
+  cd packages/redis
+  curl -s https://raw.githubusercontent.com/sfcampbell/bobarr/redo/packages/redis/redis.conf -o redis.conf
 )
 
 curl -s https://raw.githubusercontent.com/iam4x/bobarr/master/.env -o .env
