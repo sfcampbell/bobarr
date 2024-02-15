@@ -1,7 +1,7 @@
 {
-  "name": "@bobarr/api",
+  "name": "@bobarr/api-1080",
   "version": "1.0.0-beta.3",
-  "description": "bobarr api server",
+  "description": "bobarr api-1080 server",
   "author": "iam4x <iam4x@me.com>",
   "private": true,
   "license": "MIT",
