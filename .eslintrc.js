@@ -1,7 +1,8 @@
 // eslint-disable-next-line import/no-commonjs
+const utils = require("@eslint-community/eslint-utils");
 module.exports = {
   extends: ['algolia', 'algolia/react', 'algolia/typescript'],
-  exports: [ "./lib/util/glob-util", "./util" ],
+//  exports: [ "./lib/util/glob-util" = "./util" ],
   rules: {
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
