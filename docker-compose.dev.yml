@@ -15,6 +15,10 @@ services:
     build:
       context: ./packages/api-1080
     command: yarn dev
+    environment:
+      - API_QUALITY=1080
+      - POSTGRES_DB=bobarr1080
+      - PORT=4000
     volumes:
       - ./packages/api-1080:/usr/src/app
       - api_1080_node_modules:/usr/src/app/node_modules
@@ -26,6 +30,8 @@ services:
     command: yarn dev
     environment:
       - WEB_UI_API_URL=http://bobarr-1080-api:4000
+      - API_QUALITY=1080
+      - PORT=3000
     volumes:
       - ./packages/web-1080:/usr/src/app
       - web_1080_node_modules:/usr/src/app/node_modules
@@ -35,6 +41,10 @@ services:
     build:
       context: ./packages/api-720
     command: yarn dev
+    environment:
+      - API_QUALITY=720
+      - POSTGRES_DB=bobarr720
+      - PORT=4001
     volumes:
       - ./packages/api-720:/usr/src/app
       - api_720_node_modules:/usr/src/app/node_modules
@@ -46,6 +56,8 @@ services:
     command: yarn dev
     environment:
       - WEB_UI_API_URL=http://bobarr-720-api:4001
+      - API_QUALITY=720
+      - PORT=3001
     volumes:
       - ./packages/web-720:/usr/src/app
       - web_720_node_modules:/usr/src/app/node_modules

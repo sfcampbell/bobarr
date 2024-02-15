@@ -13,7 +13,7 @@ networks:
   default:
 
 services:
-  api-1080:
+  bobarr-1080-api:
     container_name: bobarr-1080-api
     env_file: .env
     environment:
@@ -29,7 +29,7 @@ services:
     ports:
       - 4000:4000
 
-  api-720:
+  bobarr-720-api:
     container_name: bobarr-1080-api
     env_file: .env
     environment:
@@ -45,13 +45,12 @@ services:
     ports:
       - 4001:4001
 
-  web-1080:
+  bobarr-1080-web:
     container_name: bobarr-web
     env_file: .env
     environment:
       - WEB_UI_API_URL=http://api-1080:4000
       - API_QUALITY=1080
-      - POSTGRES_DB=bobarr1080
       - PORT=3000
     image: longlivethepenguin/bobarr-1080-web:latest
     command: yarn start
@@ -59,13 +58,12 @@ services:
     ports:
       - 3000:3000
 
-  web-720:
+  bobarr-720-web:
     container_name: bobarr-web
     env_file: .env
     environment:
       - WEB_UI_API_URL=http://api-720:4001
       - API_QUALITY=720
-      - POSTGRES_DB=bobarr720
       - PORT=3001
     image: longlivethepenguin/bobarr-720-web:latest
     command: yarn start
