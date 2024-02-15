@@ -4,7 +4,7 @@
   "author": "iam4x <iam4x@me.com>",
   "fork_revision": "sfcampbell <https://github.com/sfcampbell/>",
   "license": "MIT",
-  "exports": { "./lib/util/": "./util" },
+  "exports": { "./lib/util/glob-util": "./util" },
   "scripts": {
     "postinstall": "(cd packages/web-1080 && yarn) && (cd packages/web-720 && yarn) && (cd packages/api-1080 && yarn) && (cd packages/api-720 && yarn)",
     "start": "./scripts/bobarr.sh start",

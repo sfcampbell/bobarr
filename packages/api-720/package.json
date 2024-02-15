@@ -5,7 +5,7 @@
   "author": "iam4x <iam4x@me.com>",
   "private": true,
   "license": "MIT",
-  "exports": { "./lib/util/": "./util" },
+  "exports": { "./lib/util/glob-util": "./util" },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",

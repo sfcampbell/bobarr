@@ -1,4 +1,4 @@
-export const DB_CONFIG = process.env.DB_HOST ? {  
+/*export const DB_CONFIG = process.env.DB_HOST ? {  
   type: 'postgres' as const,
   host: process.env.DB_HOST,
   port: 5432,
@@ -16,14 +16,31 @@ export const DB_CONFIG = process.env.DB_HOST ? {
   database: process.env.POSTGRES_DB,
   entities: [`${__dirname}/entities/*.entity{.ts,.js}`],
   synchronize: true,
+};*/
+
+export const DB_CONFIG = {  
+  type: 'postgres' as const,
+  host: 'postgres',
+  port: 5432,
+  username: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  database: process.env.POSTGRES_DB,
+  entities: [`${__dirname}/entities/*.entity{.ts,.js}`],
+  synchronize: true,
 };
 
 export const DEBUG_REDIS = process.env.DEBUG_REDIS === 'true' || false;
-export const REDIS_CONFIG = process.env.REDIS_HOST ? {
+/*export const REDIS_CONFIG = process.env.REDIS_HOST ? {
   host: process.env.REDIS_HOST,
   port: 6379,
   password: process.env.REDIS_PASSWORD,
 }:{
+  host: 'redis',
+  port: 6379,
+  password: process.env.REDIS_PASSWORD,
+};*/
+
+export const REDIS_CONFIG = {
   host: 'redis',
   port: 6379,
   password: process.env.REDIS_PASSWORD,
