@@ -2,7 +2,8 @@ FROM node:14-alpine
 
 RUN apk add curl
 
-ENV PORT 3001
+ARG port 3001
+ENV PORT 3001, port 3001
 EXPOSE 3001
 
 WORKDIR /usr/src/app
