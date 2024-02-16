@@ -1,6 +1,6 @@
 FROM node:14-alpine
 
-RUN apk add curl
+RUN apk add curl git
 
 ARG port 3001
 ENV PORT 3001, port 3001
