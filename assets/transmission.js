@@ -4,10 +4,13 @@ const http = require("http");
 const https = require("https");
 const fs = require("fs");
 const events_1 = require("events");
+const TxURL = process.env.TRANSMISSION_HOST;
+const TxPORT = process.env.TRANSMISSION_PORT;
+
 const defaultOptions = {
     url: '/transmission/rpc',
-    host: 'localhost',
-    port: 9091,
+    host: {TxURL} || 'transmission',
+    port: {TxPORT} || 9091,
     ssl: false,
     key: null,
     username: null,

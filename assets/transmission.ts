@@ -4,11 +4,13 @@ import * as util from 'util';
 import * as fs from 'fs';
 import { EventEmitter } from 'events';
 import { TransmissionOptions, File, FileStat, Peer, Torrent, Session, Status } from './interface';
+const TxURL = process.env.TRANSMISSION_HOST;
+const TxPORT = process.env.TRANSMISSION_PORT;
 
 const defaultOptions: TransmissionOptions = {
     url: '/transmission/rpc',
-    host: 'localhost',
-    port: 9091,
+    host: {TxURL} || 'transmission',
+    port: {TxPORT} || 9091,
     ssl: false,
     key: null,
     username: null,
