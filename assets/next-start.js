@@ -85,8 +85,8 @@ const nextStart=argv=>{
     process.exit(0);
   }
   const dir=(0,_path.resolve)(args._[0]||'.');
-  const PORT=process.env.PORT;
-  const port=args[{PORT}]||3000;
+  const port=process.env.PORT || 3000;
+  // const port=args[{PORT}]||3000;
   (0,_startServer.default)({dir},port,args['--hostname']).then(async app=>{Log.ready(`Started API server on http://${args['--hostname']||'localhost'}:${port}`);await app.prepare();}).catch(err=>{console.error(err);process.exit(1);});
 };
 exports.nextStart=nextStart;
