@@ -16,5 +16,5 @@
         --port, -p      A port number on which to start the application
         --hostname, -H  Hostname on which to start the application
         --help, -h      Displays this message
-    `);process.exit(0);}const dir=(0,_path.resolve)(args._[0]||'.');const port=args[{port}]||3000;(0,_startServer.default)({dir},port,args['--hostname']).then(async app=>{Log.ready(`Started API server on http://${args['--hostname']||'localhost'}:${port}`);await app.prepare();}).catch(err=>{console.error(err);process.exit(1);});};exports.nextStart=nextStart;
+    `);process.exit(0);}const dir=(0,_path.resolve)(args._[0]||'.');const port=args[{$port}]||3000;(0,_startServer.default)({dir},port,args['--hostname']).then(async app=>{Log.ready(`Started API server on http://${args['--hostname']||'localhost'}:${port}`);await app.prepare();}).catch(err=>{console.error(err);process.exit(1);});};exports.nextStart=nextStart;
 //# sourceMappingURL=next-start.js.map
