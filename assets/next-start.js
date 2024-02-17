@@ -7,6 +7,7 @@ var _index=_interopRequireDefault(require("next/dist/compiled/arg/index.js"));
 var _startServer=_interopRequireDefault(require("../server/lib/start-server"));
 var _utils=require("../server/lib/utils");
 var Log=_interopRequireWildcard(require("../build/output/log"));
+var port=process.env.PORT;
 
 function _getRequireWildcardCache(){
   if(typeof WeakMap!=="function")return null;
@@ -49,10 +50,6 @@ function _interopRequireWildcard(obj){
 
 function _interopRequireDefault(obj){
   return obj&&obj.__esModule?obj:{default:obj};
-}
-
-module.exports = {
-  env: { port: process.env.PORT },
 }
 
 const nextStart=argv=>{
