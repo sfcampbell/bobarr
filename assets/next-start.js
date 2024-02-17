@@ -7,7 +7,7 @@ var _index=_interopRequireDefault(require("next/dist/compiled/arg/index.js"));
 var _startServer=_interopRequireDefault(require("../server/lib/start-server"));
 var _utils=require("../server/lib/utils");
 var Log=_interopRequireWildcard(require("../build/output/log"));
-var port=process.env.PORT;
+// var port=process.env.PORT;
 
 function _getRequireWildcardCache(){
   if(typeof WeakMap!=="function")return null;
@@ -85,7 +85,7 @@ const nextStart=argv=>{
     process.exit(0);
   }
   const dir=(0,_path.resolve)(args._[0]||'.');
-  const port=args[{port}]||3000;
+  const port=args[{process.env.PORT}]||3000;
   (0,_startServer.default)({dir},port,args['--hostname']).then(async app=>{Log.ready(`Started API server on http://${args['--hostname']||'localhost'}:${port}`);await app.prepare();}).catch(err=>{console.error(err);process.exit(1);});
 };
 exports.nextStart=nextStart;
